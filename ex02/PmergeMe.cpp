@@ -1,5 +1,7 @@
 #include "PmergeMe.hpp"
 
+/* ---------Fonctions Victor start here---------*/
+
 void    show_vector(std::vector<int>& victor)
 {
     for (std::vector<int>::iterator it = victor.begin(); it != victor.end(); it++)
@@ -9,7 +11,6 @@ void    show_vector(std::vector<int>& victor)
 
 void    show_vector(std::vector<std::pair<int, int> >& victor)
 {
-    std::cout << "/-----------------------------" << std::endl;
     for (std::vector<std::pair<int, int> >::iterator it = victor.begin(); it != victor.end(); it++)
         std::cout << (*it).first << " " << (*it).second << std::endl;
 }
@@ -59,9 +60,7 @@ std::vector<int> insert_low(std::vector<std::pair<int, int> > victor)
         count = *it_low;
         std::vector<int>::iterator it_bigger = bigger.begin();
         while (it_bigger != bigger.end() && count > *it_bigger)
-        {
             ++it_bigger;
-        }
         bigger.insert(it_bigger, count);
     }
     return (bigger);
@@ -85,51 +84,36 @@ std::vector<int> insert_low_imp(std::vector<std::pair<int, int> > victor, int nb
         count = *it_low;
         std::vector<int>::iterator it_bigger = bigger.begin();
         while (it_bigger != bigger.end() && count > *it_bigger)
-        {
             ++it_bigger;
-        }
         bigger.insert(it_bigger, count);
     }
     return (bigger);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+/* ---------Fonctions Dereck start here---------*/
 
 void show_deque(std::deque<int>& deq)
 {
-    for (std::deque<int>::iterator it = deq.begin(); it != deq.end(); ++it) {
+    for (std::deque<int>::iterator it = deq.begin(); it != deq.end(); ++it)
         std::cout << *it << " ";
-    }
     std::cout << std::endl;
 }
 
-// Fonction pour afficher les éléments d'un deque de paires d'entiers
 void show_deque(std::deque<std::pair<int, int> >& deq)
 {
     std::cout << "Deque of pairs:" << std::endl;
-    for (std::deque<std::pair<int, int> >::iterator it = deq.begin(); it != deq.end(); ++it) {
+    for (std::deque<std::pair<int, int> >::iterator it = deq.begin(); it != deq.end(); ++it)
         std::cout << it->first << " " << it->second << std::endl;
-    }
 }
 
-// Fonction de partitionnement pour le tri rapide (quick sort) sur un deque de paires
 int musique_deck(std::deque<std::pair<int, int> >& deq, int low, int pivot)
 {
     int val_pivot = deq[pivot].second;
     int i = low - 1;
-    for (int j = low; j <= pivot - 1; ++j) {
-        if (deq[j].second < val_pivot) {
+    for (int j = low; j <= pivot - 1; ++j)
+    {
+        if (deq[j].second < val_pivot)
+        {
             ++i;
             std::swap(deq[i], deq[j]);
         }
@@ -138,32 +122,33 @@ int musique_deck(std::deque<std::pair<int, int> >& deq, int low, int pivot)
     return i + 1;
 }
 
-// Fonction de tri rapide (quick sort) sur un deque de paires
 void nesquik_deck(std::deque<std::pair<int, int> >& deq, int low, int pivot)
 {
-    if (low < pivot) {
+    if (low < pivot)
+    {
         int i = musique_deck(deq, low, pivot);
         nesquik_deck(deq, low, i - 1);
         nesquik_deck(deq, i + 1, pivot);
     }
 }
 
-// Fonction pour insérer les éléments 'first' d'un deque de paires dans un vecteur trié
 std::deque<int> insert_low(std::deque<std::pair<int, int> >& deq)
 {
     std::deque<int> lower;
     std::deque<int> bigger;
-    for (std::deque<std::pair<int, int> >::iterator it = deq.begin(); it != deq.end(); ++it) {
+
+    for (std::deque<std::pair<int, int> >::iterator it = deq.begin(); it != deq.end(); ++it)
+    {
         lower.push_back(it->first);
         bigger.push_back(it->second);
     }
     int count = 0;
-    for (std::deque<int>::iterator it_low = lower.begin(); it_low != lower.end(); ++it_low) {
+    for (std::deque<int>::iterator it_low = lower.begin(); it_low != lower.end(); ++it_low)
+    {
         count = *it_low;
         std::deque<int>::iterator it_bigger = bigger.begin();
-        while (it_bigger != bigger.end() && count > *it_bigger) {
+        while (it_bigger != bigger.end() && count > *it_bigger)
             ++it_bigger;
-        }
         bigger.insert(it_bigger, count);
     }
     return bigger;
@@ -173,6 +158,7 @@ std::deque<int> insert_low_imp(std::deque<std::pair<int, int> >& deq, int nb)
 {
     std::deque<int> lower;
     std::deque<int> bigger;
+
     for (std::deque<std::pair<int, int> >::iterator it = deq.begin(); it != deq.end(); ++it)
     {
         lower.push_back(it->first);
@@ -180,12 +166,12 @@ std::deque<int> insert_low_imp(std::deque<std::pair<int, int> >& deq, int nb)
     }
     lower.push_back(nb);
     int count = 0;
-    for (std::deque<int>::iterator it_low = lower.begin(); it_low != lower.end(); ++it_low) {
+    for (std::deque<int>::iterator it_low = lower.begin(); it_low != lower.end(); ++it_low) 
+    {
         count = *it_low;
         std::deque<int>::iterator it_bigger = bigger.begin();
-        while (it_bigger != bigger.end() && count > *it_bigger) {
+        while (it_bigger != bigger.end() && count > *it_bigger)
             ++it_bigger;
-        }
         bigger.insert(it_bigger, count);
     }
     return bigger;

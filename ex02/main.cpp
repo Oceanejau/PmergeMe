@@ -1,7 +1,5 @@
 #include "PmergeMe.hpp"
 
-
-
 int     main(int ac, char **av)
 {
     int nb;
@@ -32,15 +30,6 @@ int     main(int ac, char **av)
             std::istringstream isis(av[y]);
             isis >> t;
             isisi >> s;
-            /*if (xx != y)
-            {
-          //  std::cout << av[xx] <<  "==" << av[y] << " && xx= " << xx << " y =" << y  << std::endl;
-                if (av[xx] == av[y])
-                {
-                    std::cout << "FUCKING same" << std::endl;
-                }
-            }*/
-           // std::cout << av[xx] <<  "xx - " << xx <<"same?" << av[y] << std::endl;
             if (t == s && y != xx)
             {
                 std::cout << "Error: Doubles" << std::endl;
@@ -78,80 +67,52 @@ int     main(int ac, char **av)
                 victor.pop_back();
                 victor.push_back(myPair);
             }
-            
-
-
+            /*   deque    */
             dereck.push_back(std::make_pair(nbr, nb));
-            std::pair<int, int>& myPari = dereck.back(); // Accéder à la dernière paire ajoutée
+            std::pair<int, int>& myPari = dereck.back();
             if (myPari.first > myPari.second)
-            {
-                // Échanger les éléments de la paire si nécessaire
                 std::swap(myPari.first, myPari.second);
-            }
-            //show_deque(dereck);
-
             y++;
         }
         else
-        {
             nbr = nb;
-        }
     }
-  
-   /*
-   deque
-   finde
-        ici lancer timer
-   */
+    /* ---------Timer Victor start here---------*/
     clock_t         start = clock();
     nesquik(victor, 0, victor.size() - 1);
     if ((ac - 1) % 2)
-    {
         sorted = insert_low_imp(victor, nbr);
-    }
     else
         sorted = insert_low(victor);
+    clock_t         time_victor = clock();
+    /* ---------Timer Victor end here---------*/
     std::cout << "Victor: ";
     show_vector(sorted);
-   
-    clock_t         time_victor = clock();
     time_victor = time_victor - start;
+    /* ---------Timer Dereck start here---------*/
     start = clock();
     desorted = insert_low(dereck);
     nesquik_deck(dereck, 0, dereck.size() - 1);
     if ((ac - 1) % 2)
-    {
         desorted = insert_low_imp(dereck, nb);
-    }
     else
         desorted = insert_low(dereck);
-    
-
     clock_t         time_dereck = clock();
+    /* ---------Timer Dereck end here---------*/
     time_dereck = time_dereck - start;
     std::cout << "Deque:   ";
     show_deque(desorted);
-/*
-    fin timer + print affichage
-*/
-
-
-    //musique_l(lisi, 0, lisi.size() - 1);
-   // nesquik_l(lisi, 0, lisi.size() - 1);
-    //double elapsed_seconds = static_cast<double>(time_victor - start) / CLOCKS_PER_SEC; // Temps en secondes
-   // double elapsed_microseconds = elapsed_seconds * 1e6;
-
-    std::cout << "\nBefore: ";
+    /* ---------Final Print---------*/
+    std::cout << "\nBefore:  ";
     for (int x = 1; x < ac; x++)
     {
         std::cout << av[x] << " ";
     }
     std::cout << std::endl;
-    std::cout << "\nAfter: ";
-        show_vector(sorted);
+    std::cout << "\nAfter:  ";
+    show_vector(sorted);
     std::cout << std::endl;
-    std::cout << "Time to process a range of " << ac - 1 << " elements with std::[" << "vector" << "] : " << time_victor << " clock ticks /s" << std::endl;
-    std::cout << "Time to process a range of " << ac - 1 << " elements with std::[" << "deque" << "] : " << time_dereck << " clock ticks /s" << std::endl;
-    
+    std::cout << "Time to process a range of " << ac - 1 << " elements with std::[" << "vector" << "]: " << time_victor << " us"<< std::endl;
+    std::cout << "Time to process a range of " << ac - 1 << " elements with std::[" << "deque" << "]:  " << time_dereck << " us" << std::endl;
     return (0);
 }

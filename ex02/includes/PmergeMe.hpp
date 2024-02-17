@@ -11,6 +11,9 @@
 #include <string>
 #include <deque>
 
+
+/* ---------Fonctions Victor start here---------*/
+
 int     musique(std::vector<std::pair<int, int> >& victor, int low, int pivot);
 void    nesquik(std::vector<std::pair<int, int> >& victor, int low, int pivot);
 void    show_vector(std::vector<std::pair<int, int> >& victor);
@@ -18,6 +21,7 @@ void    show_vector(std::vector<int>& victor);
 std::vector<int> insert_low(std::vector<std::pair<int, int> > victor);
 std::vector<int> insert_low_imp(std::vector<std::pair<int, int> > victor, int nb);
 
+/* ---------Fonctions Dereck start here---------*/
 
 void    show_deque(std::deque<int>& deq);
 void    show_deque(std::deque<std::pair<int, int> >& deq);
